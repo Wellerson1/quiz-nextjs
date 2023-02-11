@@ -1,13 +1,16 @@
+import { embaralhar } from "../functions/arrays";
+import RespostaModel from "./resposta";
+
 export default class QuestaoModel {
     #id: number;
     #enunciado: string;
     #acertou: boolean;
-    #respostas: any[];
+    #respostas: RespostaModel[];
 
     constructor(id: number,
                 enunciado: string,
                 acertou: boolean,
-                respostas: any[]) {
+                respostas: RespostaModel[]) {
         this.#acertou = acertou
         this.#enunciado = enunciado
         this.#id = id
@@ -28,5 +31,39 @@ export default class QuestaoModel {
 
     get respostas() {
         return this.#respostas
+    }
+
+    get respondida() {
+        for(let resposta of this.#respostas) {
+           return resposta.revelada === true
+        }
+        return false
+    }
+
+    responderCom(indice: number) {
+        const acertou = this.#respostas[indice].certa
+        const respostas = this.#respostas.map((res, i) => {
+            const respostasSelesionada = indice === i
+            const deveRevelar = respostasSelesionada || res.certa
+
+            return deveRevelar ? res.revelar() : res
+        })
+
+        return new QuestaoModel(this.#id, this.#enunciado, acertou, respostas)
+    }
+
+    embaralharRespostas(): QuestaoModel {
+        const respostasEmbaralhadas = embaralhar(this.respostas)
+        return new QuestaoModel(this.#id, this.#enunciado, this.#acertou, respostasEmbaralhadas)
+    }
+
+    toObject() {
+        return {
+            id: this.#id,
+            enunciado: this.#enunciado,
+            acertou: this.#acertou,
+            respondida: this.respondida,
+            respostas: this.#respostas.map(resp => resp.toObject())
+        }
     }
 }
