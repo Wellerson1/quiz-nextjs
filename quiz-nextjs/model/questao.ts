@@ -9,8 +9,9 @@ export default class QuestaoModel {
 
     constructor(id: number,
                 enunciado: string,
-                acertou: boolean,
-                respostas: RespostaModel[]) {
+                respostas: RespostaModel[],
+                acertou = false,
+                ) {
         this.#acertou = acertou
         this.#enunciado = enunciado
         this.#id = id
@@ -49,12 +50,12 @@ export default class QuestaoModel {
             return deveRevelar ? res.revelar() : res
         })
 
-        return new QuestaoModel(this.#id, this.#enunciado, acertou, respostas)
+        return new QuestaoModel(this.#id, this.#enunciado, respostas, acertou)
     }
 
     embaralharRespostas(): QuestaoModel {
         const respostasEmbaralhadas = embaralhar(this.respostas)
-        return new QuestaoModel(this.#id, this.#enunciado, this.#acertou, respostasEmbaralhadas)
+        return new QuestaoModel(this.#id, this.#enunciado, respostasEmbaralhadas, this.#acertou)
     }
 
     toObject() {
