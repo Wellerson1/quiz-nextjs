@@ -10,9 +10,9 @@ export default function handler(req, res) {
   if(unicaQuestaoOuNada.length) {
     const questaoSelecionada = unicaQuestaoOuNada[0].embaralharRespostas()
 
-    const obj = questaoSelecionada.responderCom(0)
+    const obj = questaoSelecionada
     res.status(200).json(obj.toObject())
   } else {
-    res.status(204).send()
+    res.status(204).send()  
   }
 }

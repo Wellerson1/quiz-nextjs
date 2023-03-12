@@ -15,6 +15,10 @@
     transform-style: preserve-3d;
 }
 
+.respostaRevelada.conteudoResposta {
+    transform: rotateY(180deg);
+}
+
 .frente, .verso {
     position: absolute;
     display: flex;
@@ -24,6 +28,17 @@
     backface-visibility: hidden;
 }
 
+.frente {
+    align-items: center;
+    border-radius: 12px;
+    padding: 15px;
+    color: #000;
+    background-color: #fff;
+}
+
+.verso {
+    transform: rotateY(180deg);
+}
 
 .verso > div {
     display: flex;
@@ -46,19 +61,6 @@
     font-size: 1.5rem;
 }
 
-.frente {
-    align-items: center;
-    border-radius: 12px;
-    padding: 15px;
-    color: #000;
-    background-color: #fff;
-}
-
-.valor {
-    font-size: 1.3rem;
-    font-weight: 700;
-}
-
 .letra {
     display: flex;
     justify-content: center;
@@ -70,4 +72,9 @@
     font-weight: 700;
     margin-right: 20px;
     color: #fff;
+}
+
+.valor {
+    font-size: 1.3rem;
+    font-weight: 700;
 }

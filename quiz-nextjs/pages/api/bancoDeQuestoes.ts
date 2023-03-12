@@ -2,23 +2,29 @@ import QuestaoModel from "../../model/questao";
 import RespostaModel from "../../model/resposta";
 
 const questoes: QuestaoModel[] = [
-    new QuestaoModel(290, "Qual o melhor time do Rio?", 
-    [ RespostaModel.errada("Botafogo"),
-      RespostaModel.errada("Flamengo"),
-      RespostaModel.certa("Fluminense"),
-      RespostaModel.errada("Vasco") ]),
+    new QuestaoModel(1, "Qual minha comida favorita?", 
+    [ RespostaModel.errada("Panqueca"),
+      RespostaModel.errada("Frutos do mar"),
+      RespostaModel.certa("Lasanha"),
+      RespostaModel.errada("Hamburguer") ]),
     
-    new QuestaoModel(356, "Quem foi o campeão da libertadores em 2006?", 
-    [ RespostaModel.errada("São Paulo"),
-      RespostaModel.errada("Boca Juniors"),
-      RespostaModel.certa("Internacional"),
-      RespostaModel.errada("Peñarol") ]),
+    new QuestaoModel(2, "Qual minha cor favorita?", 
+    [ RespostaModel.errada("Azul"),
+      RespostaModel.errada("Lilas"),
+      RespostaModel.certa("Rosa"),
+      RespostaModel.errada("Vermelho") ]),
     
-    new QuestaoModel(890, "Qual o ano Brasil ganhou o penta?", 
-    [ RespostaModel.errada("2000"),
-      RespostaModel.errada("2004"),
-      RespostaModel.certa("2002"),
-      RespostaModel.errada("2003") ])
+    new QuestaoModel(3, "Qual dos RBDs é meu preferido?", 
+    [ RespostaModel.errada("Dulce"),
+      RespostaModel.errada("Poncho"),
+      RespostaModel.certa("Christian"),
+      RespostaModel.errada("Anahí") ]),
+
+      new QuestaoModel(4, "Qual meu animal preferido?", 
+    [ RespostaModel.errada("Cachorro"),
+      RespostaModel.errada("Passarinho"),
+      RespostaModel.certa("Cavalo"),
+      RespostaModel.errada("Ovelha") ])
 ];
 
 export default questoes
