@@ -9,7 +9,7 @@ interface EstatisticaProps {
 
 export function Estatistica(props: EstatisticaProps) {
     return (
-        <div className={styles.estatistica} >
+        <div className={styles.estatistica}>
             <div className={styles.valor}style={{ 
             color: props.corFonte ?? '#333',
             backgroundColor: props.corFundo ?? '#FDD60F'}}>

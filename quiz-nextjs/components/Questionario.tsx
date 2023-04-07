@@ -15,7 +15,6 @@ interface QuestionarioProps {
 
 export default function Questionario(props: QuestionarioProps) {
 
-
     function recebeResposta(indice: number) {
         if(!props.questao.respondida) {
             props.questaoRespondida(props.questao.responderCom(indice))

@@ -30,9 +30,14 @@ const [qtdRespostaCerta, setQtdRespostaCerta] = useState(0)
   }
 
   async function consultarQuestao(id) {
-    const res = await fetch(`${BASE_URL_JS}/questoes/${id}`)
-    const json = await res.json()
-    const questao = QuestaoModel.criarUsandoObjeto(json)
+    const res = await fetch(`${BASE_URL}/questao/lista`)
+    const questoes: QuestaoModel[] = await res.json();
+    const questoaoRes = questoes.find(q => q.id === id)
+    const questao = QuestaoModel.criarUsandoObjeto(questoaoRes)
+
+  //  const res = await fetch(`${BASE_URL_JS}/questoes/${id}`)
+  //  const json = await res.json()
+  //  const questao = QuestaoModel.criarUsandoObjeto(json)
     setQuestao(questao)
   }
 
@@ -60,7 +65,6 @@ const [qtdRespostaCerta, setQtdRespostaCerta] = useState(0)
   }
 
   function irParaProximoPassoTimer() {
-    console.log(questao)
     if(!questao.respondida) {
       const proximoId = idProximaQuestao()
       proximoId ? irParaProximaQuestao(proximoId) : finalizar() 

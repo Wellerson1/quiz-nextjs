@@ -40,7 +40,7 @@ export default function Resposta(props: RespostaProps) {
                             {resposta.valor}
                         </div>
                     </div>)}
-                    </div>
+            </div>
         </div>
         </div>
     )
