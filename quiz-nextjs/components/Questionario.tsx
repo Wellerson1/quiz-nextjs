@@ -10,7 +10,6 @@ interface QuestionarioProps {
     questaoRespondida: (questao: QuestaoModel) => void
     irParaProximoPasso: () => void
     irParaProximoPassoTimer: () => void
-
 }
 
 export default function Questionario(props: QuestionarioProps) {

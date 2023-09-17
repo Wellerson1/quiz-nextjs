@@ -2,14 +2,14 @@ import { embaralhar } from "../functions/arrays";
 import RespostaModel from "./resposta";
 
 export default class QuestaoModel {
-    #id: number;
+    #id?: number;
     #enunciado: string;
-    #acertou: boolean;
+    #acertou?: boolean;
     #respostas: RespostaModel[];
 
-    constructor(id: number,
-                enunciado: string,
-                respostas: RespostaModel[],
+    constructor(id?: number, 
+                enunciado?: string,
+                respostas?: RespostaModel[],
                 acertou = false,
                 ) {
         this.#acertou = acertou
