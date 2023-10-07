@@ -1,18 +1,11 @@
-import { useState } from "react";
 import Formulario from "../components/Formulario";
 import { DataBaseProvider } from "../data/context/DataBaseContext";
-import useDataBase from "../data/hook/useDataBase";
 import { BASE_URL } from "../functions/constantes";
 import QuestaoModel from "../model/questao";
-import { RegisterQuiz } from "./RegisterQuestion";
-import route from 'next/router'
-import { Quiz } from "../data/Quiz.model";
+import styles from "../styles/Cadastro.module.css"
+import QuizList from "./QuizList";
 
-
-export default function Cadastro() {
-
-    const [quiz, setQuiz] = useState();
-    const { create } = useDataBase();
+export default function Lista() {
 
     async function enviarQuestao(questao: QuestaoModel) {
 
@@ -37,17 +30,9 @@ export default function Cadastro() {
 
     }
 
-    async function save(quiz: Quiz) {
-        await create(quiz);
-    }
-
-    function goToList() {
-        route.push("/lista")
-    }
-
     return (
         <DataBaseProvider>
-            <RegisterQuiz save={save} cancel={goToList}/>
+            <QuizList />
         </DataBaseProvider>
     )
 }

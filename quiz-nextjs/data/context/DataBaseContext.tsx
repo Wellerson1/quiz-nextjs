@@ -14,21 +14,22 @@ interface IDbContextProps {
 const DbContext = createContext<IDbContextProps>({});
 
 const create = async (quiz: Quiz) => {
-  quiz = {
-    id: "1",
-    name: "Programação",
-    countQuestion: 12,
-  };
   await db.collection("quiz").add(quiz);
 };
 
 const update = async (id: number) => {};
 
-const deleteQuiz = async (id: number) => {};
+const deleteQuiz = async (quiz: any) => {
+  console.log(quiz)
+  await db.collection("quiz").doc(quiz._id).delete();
+};
 
 const list = async () => {
   const snapshot = await db.collection("quiz").get();
-  const quiz = snapshot.docs.map(doc => ({id: doc.id, ...doc.data()}));
+  console.log(snapshot.docs)
+  const quiz = snapshot.docs.map(doc => (
+    {_id: doc.id, ...doc.data()}
+    ));
   return quiz;
 };
 

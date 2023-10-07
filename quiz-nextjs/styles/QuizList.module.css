@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;800&display=swap');
+
+.quiz {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+  padding: 50px;
+}
+
+.quizHeader {
+  display: flex;
+  justify-content:space-between;
+}
+
+.buttons {
+  display: flex;
+}
+
+.body {
+    background-color: rgb(245, 245, 245);
+    color:rgb(58, 58, 58);
+}
