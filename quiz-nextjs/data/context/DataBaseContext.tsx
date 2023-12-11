@@ -8,6 +8,7 @@ interface IDbContextProps {
   create?: (quiz?: Quiz) => Promise<void>;
   update?: (id: number) => Promise<void>;
   list?: () => void;
+  getQuizById?: (id: number) => void
   deleteQuiz?: (id: number) => Promise<void>;
 }
 
@@ -33,6 +34,15 @@ const list = async () => {
   return quiz;
 };
 
+const getQuizById = async (id: number) => {
+  const snapshot = await db.collection("quiz").get();
+  console.log(snapshot.docs)
+  const quiz = snapshot.docs.map(doc => (
+    {_id: doc.id, ...doc.data()}
+    ));
+  return quiz;
+}
+
 export function DataBaseProvider(props) {
   return (
     <DbContext.Provider
@@ -40,6 +50,7 @@ export function DataBaseProvider(props) {
         create,
         update,
         list,
+        getQuizById,
         deleteQuiz,
       }}
     >

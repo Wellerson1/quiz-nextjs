@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Formulario from "../components/Formulario";
 import { DataBaseProvider } from "../data/context/DataBaseContext";
 import useDataBase from "../data/hook/useDataBase";
@@ -7,12 +7,13 @@ import QuestaoModel from "../model/questao";
 import { RegisterQuiz } from "./RegisterQuiz";
 import route, { useRouter } from "next/router";
 import { Quiz } from "../data/Quiz.model";
+import { RegisterQuestoes } from "./RegisterQuiz/RegisterQuestion";
 import { DataTransferProvider } from "../data/context/DataTransferContext";
-import useDataTrasnfer from "../data/hook/useDataTransfer";
 
-export default function Cadastro() {
+export default function CadastroQuestoes() {
+  const [quiz, setQuiz] = useState();
   const { create } = useDataBase();
-  const [questoes, setQuestoes] = useState();
+  const router = useRouter();
 
   async function enviarQuestao(questao: QuestaoModel) {
     console.log(questao);
@@ -38,12 +39,12 @@ export default function Cadastro() {
   }
 
   function goToList() {
-    route.push("/lista");
+    route.push("/cadastro");
   }
 
   return (
     <DataBaseProvider>
-        <RegisterQuiz save={save} cancel={goToList} />
+        <RegisterQuestoes save={save} cancel={goToList} />
     </DataBaseProvider>
   );
 }

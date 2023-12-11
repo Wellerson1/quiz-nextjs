@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Questionario from "../components/Questionario";
+import useDataBase from "../data/hook/useDataBase";
 import QuestaoModel from "../model/questao";
 import RespostaModel from "../model/resposta";
 
@@ -10,7 +11,6 @@ const questaoMock = new QuestaoModel(1, 'Melhor time?', [
   RespostaModel.errada('Vasco'),
   RespostaModel.errada('Botafogo'),
   RespostaModel.certa('Fluminense')
-
 ])
 
 const BASE_URL = "http://localhost:8080"
@@ -19,19 +19,23 @@ const BASE_URL_JS = "http://localhost:3000/api"
 export default function Home() {
 const route = useRouter()
 const [questao, setQuestao] = useState(questaoMock)
+const [questoes, setQuestoes] = useState([]);
 const [idsQuestoes, setIdsQuestao] = useState([])
 const [qtdRespostaCerta, setQtdRespostaCerta] = useState(0)
+const { list } = useDataBase();
 
-  async function consultarIdsQuestoes() {
-    const res = await fetch(`${BASE_URL}/questao/ids`)
-    
-    const idsQuestoes = await res.json()
-    setIdsQuestao(idsQuestoes)
+  async function consultarIdsQuestoes(idQuiz) {
+    const docList: any = await list();
+    const quiz = docList.find(doc => 
+      doc.id === idQuiz
+    )
+    const questoes = quiz.questoes;
+    const ids = questoes.map(questao => questao.id)
+    setQuestoes(questoes);
+    setIdsQuestao(ids)
   }
 
   async function consultarQuestao(id) {
-    const res = await fetch(`${BASE_URL}/questao/lista`)
-    const questoes: QuestaoModel[] = await res.json();
     const questoaoRes = questoes.find(q => q.id === id)
     const questao = QuestaoModel.criarUsandoObjeto(questoaoRes)
 
@@ -42,12 +46,25 @@ const [qtdRespostaCerta, setQtdRespostaCerta] = useState(0)
   }
 
   useEffect(() => {
-    consultarIdsQuestoes()
-  }, [])
+    const id = +route.query.index
+    if(id) {
+      consultarIdsQuestoes(id);
+    }
+  }, [route.query.index])
 
   useEffect(() => {
     idsQuestoes.length > 0 && consultarQuestao(idsQuestoes[0])
   }, [idsQuestoes])
+
+  async function getQuiz(id: number) {
+    const docList: any = await list();
+    const quiz = docList.find((doc) => {
+      doc.id === id
+    })
+    const questoes = quiz.questoes;
+    const ids = questoes.map(questao => questao.id)
+    setQuestao(QuestaoModel.criarUsandoObjeto(quiz.questoes[0]))
+  }
 
   function recebeResposta(questao: QuestaoModel) {
     setQuestao(questao)
@@ -85,12 +102,14 @@ const [qtdRespostaCerta, setQtdRespostaCerta] = useState(0)
     })
   }
 
-  return questao ? (    
+  return questao ? (   
+    <>
     <Questionario 
       questao={questao}
       questaoRespondida={recebeResposta}
       irParaProximoPasso={irParaProximoPasso}
       irParaProximoPassoTimer={irParaProximoPassoTimer}
       ultima={!idProximaQuestao()}/>
-      ) : false
+    </> 
+   ) : false
 }

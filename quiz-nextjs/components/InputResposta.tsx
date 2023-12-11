@@ -1,4 +1,4 @@
-import styles from '../styles/Input.module.css'
+import styles from '../styles/InputResposta.module.css'
 
 
 interface InputProps {
@@ -11,7 +11,7 @@ interface InputProps {
     valorMudou?: (valor: any) => void
 }
 
-export default function Input(props: InputProps) {
+export default function InputResposta(props: InputProps) {
     return ( 
     <div className={styles.campo}>
     <label className={styles.label}>
@@ -22,7 +22,7 @@ export default function Input(props: InputProps) {
         value={props.valor}
         readOnly={props.somenteLeitura}
         onChange={e => props.valorMudou?.(e.target.value)}
-        className={props.respostaCerta ? styles.respostaCerta : styles.input}
+        className={props.respostaCerta ? styles.respostaCerta : styles.respostaErrada}
     />
     </div>
     )
