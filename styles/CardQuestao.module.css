@@ -1,0 +1,15 @@
+.questao {
+  display: flex;
+  justify-items: center;
+  justify-content: space-between;
+  min-width: 500px;
+  width: 80%;
+  margin: 10px;
+  align-items: center;
+  border-radius: 12px;
+  padding: 15px;
+  color: #000;
+  background-color: #fff;
+  font-size: 1.3rem;
+  font-weight: 700;
+}

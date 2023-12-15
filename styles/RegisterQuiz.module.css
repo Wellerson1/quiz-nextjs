@@ -1,0 +1,29 @@
+.resgisterQuiz {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    height: 100vh;
+    padding: 50px;
+    width: 70%;
+}
+
+.erro {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(255, 255, 255);
+    width: 50%;
+    height: 50px;
+    border: rgb(218, 144, 144) solid;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+
+}
