@@ -25,7 +25,7 @@ interface IProps {
   cancel: () => void;
 }
 
-export function RegisterQuiz({ save, cancel }: IProps) {
+export default function RegisterQuiz({ save, cancel }: IProps) {
   const [name, setName] = useState();
   const [duration, setDuration] = useState();
   const [erro, setErro] = useState("");

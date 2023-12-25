@@ -18,7 +18,7 @@ interface IProps {
   cancel: () => void;
 }
 
-export function RegisterQuestoes({ save, cancel }: IProps) {
+export default function RegisterQuestoes({ save, cancel }: IProps) {
   const [enunciado, setEnunciado] = useState();
   const [respCerta, setRespCerta] = useState();
   const [resp2, setResp2] = useState();

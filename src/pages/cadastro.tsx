@@ -4,7 +4,7 @@ import { DataBaseProvider } from "../data/context/DataBaseContext";
 import useDataBase from "../data/hook/useDataBase";
 import { BASE_URL } from "../functions/constantes";
 import QuestaoModel from "../model/questao";
-import { RegisterQuiz } from "./RegisterQuiz";
+import  RegisterQuiz  from "./RegisterQuiz";
 import route, { useRouter } from "next/router";
 import { Quiz } from "../data/Quiz.model";
 import { DataTransferProvider } from "../data/context/DataTransferContext";
