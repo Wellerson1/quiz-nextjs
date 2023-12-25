@@ -11,14 +11,9 @@ import {
   IconDelete,
   IconeAtencao,
 } from "../../icons/Icons";
-import QuestaoModel from "../../model/questao";
 import styles from "../../styles/RegisterQuiz.module.css";
 import route, { useRouter } from "next/router";
 import useDataTrasnfer from "../../data/hook/useDataTransfer";
-import questoes from "../api/bancoDeQuestoes";
-import Error from "next/error";
-import { time } from "console";
-import { setRequestMeta } from "next/dist/server/request-meta";
 
 interface IProps {
   save: (quiz: Quiz) => Promise<void>;
