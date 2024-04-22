@@ -6,7 +6,6 @@ import QuestaoModel from "../model/questao";
 import route, { useRouter } from "next/router";
 import { Quiz } from "../data/Quiz.model";
 import  RegisterQuestoes  from "./RegisterQuiz/RegisterQuestion";
-import { DataTransferProvider } from "../data/context/DataTransferContext";
 
 export default function CadastroQuestoes() {
   const [quiz, setQuiz] = useState();

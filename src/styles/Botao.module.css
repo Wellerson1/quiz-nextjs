@@ -1,92 +1,57 @@
-.botao {
-    color: #fff;
-    border-radius: 8px;
-    font-weight: 200;
-    font-size: 1.2rem;
+.botao, .botaoSecondary, .botaoDanger {
+    font-size: 1rem; /* Tamanho de fonte mais padrão para melhor legibilidade */
+    font-weight: 400; /* Peso de fonte normal para um visual mais limpo */
+    color: #fff; /* Cor branca para o texto em todos os botões, exceto o secundário */
+    padding: 10px 20px; /* Ajuste no padding para uma proporção mais equilibrada */
+    margin: 10px; /* Diminuição da margem para evitar espaçamento excessivo */
+    border-radius: 5px; /* Raio da borda mais sutil */
     border: none;
-    padding: 10px 25px;
-    margin: 20px;
-    background-color: #9885F0;
     cursor: pointer;
-    transition: all .2s ease-in-out;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
     display: flex;
     align-items: center;
-    justify-items: center;
+    justify-content: center; /* Correção de propriedade para centralização */
+}
+
+.botao {
+    background-color: #5A67D8; /* Cor de fundo mais suave */
 }
 
 .botaoSecondary {
-    color: #9885F0;
-    border-radius: 8px;
-    font-weight: 200;
-    font-size: 1.2rem;
-    border: solid #9885F0;
-    padding: 10px 25px;
-    margin: 20px;
-    cursor: pointer;
-    transition: all .2s ease-in-out;
-    display: flex;
-    align-items: center;
-    justify-items: center;
+    color: #5A67D8; /* Cor de texto para contraste com o botão secundário */
+    background-color: transparent; /* Fundo transparente para estilo secundário */
+    border: 2px solid #5A67D8; /* Borda visível para distinguir */
 }
 
 .botaoDanger {
-    color: #fff;
-    border-radius: 8px;
-    font-weight: 200;
-    font-size: 1.2rem;
-    border: none;
-    padding: 10px 25px;
-    margin: 20px;
-    background-color: #f08585;
-    cursor: pointer;
-    transition: all .2s ease-in-out;
-    display: flex;
-    align-items: center;
-    justify-items: center;
+    background-color: #E53E3E; /* Cor mais padrão para ações de perigo */
+}
+
+.botao:hover, .botaoSecondary:hover, .botaoDanger:hover {
+    transform: scale(1.05); /* Transformação mais sutil no hover */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra suave para efeito de elevação */
 }
 
 .icon {
-    align-items: center;
-    display: flex;
-    margin-right: 5px;
+    margin-right: 5px; /* Margem para separar o ícone do texto */
 }
 
-.buttonIconDelete .buttonIconEdit {
-    padding: 10px;
+.buttonIconDelete, .buttonIconEdit {
+    color: inherit; /* Herda a cor do pai para consistência */
     display: flex;
-    cursor: pointer;
-    margin-left: 5px;
-    transition: all .2s ease-in-out;
+    align-items: center;
+    justify-content: center; /* Centraliza o ícone dentro do botão */
+    transition: transform 0.2s;
 }
 
 .buttonIconDelete {
-    color: rgb(252, 0, 0);
+    color: #E53E3E; /* Cor para ação de deletar */
 }
 
 .buttonIconEdit {
-    color: rgb(0, 155, 252);
+    color: #3182CE; /* Cor para ação de editar */
 }
 
-.buttonIconDelete:hover {
-    transform: scale(1.1);
-}
-
-.buttonIconEdit:hover {
-    transform: scale(1.1);
-}
-
-.buttonIcon:hover {
-    transform: scale(1.1);
-}
-
-.botao:hover {
-    transform: scale(1.1);
-}
-
-.botaoSecondary:hover {
-    transform: scale(1.1);
-}
-
-.botaoDanger:hover {
-    transform: scale(1.1);
+.buttonIconDelete:hover, .buttonIconEdit:hover {
+    transform: scale(1.1); /* Efeito de escala consistente para ícones */
 }

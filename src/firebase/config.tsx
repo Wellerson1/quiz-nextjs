@@ -23,4 +23,5 @@ function iniciaFirebase() {
 }
 const db = firebase.firestore(iniciaFirebase())
 
+export {firebase};
 export default db;

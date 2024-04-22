@@ -1,6 +1,4 @@
-import { SERVER_PROPS_ID } from 'next/dist/shared/lib/constants'
 import Link from 'next/link'
-import { IconAdd } from '../icons/Icons'
 import styles from '../styles/Botao.module.css'
 
 interface BotaoProps {

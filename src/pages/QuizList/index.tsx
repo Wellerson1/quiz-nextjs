@@ -6,17 +6,20 @@ import useDataBase from "../../data/hook/useDataBase";
 import { IconAdd, IconSearch } from "../../icons/Icons";
 import styles from "../../styles/QuizList.module.css";
 import route from 'next/router'
+import useAuth from "../../data/hook/useAuth";
 
 const QuizList = () => {
   const [data, setData] = useState<any>([]);
   const { list, create, deleteQuiz } = useDataBase();
+  const { usuario } = useAuth();
 
   useEffect(() => {
     quizList()
-  }, []);
+  }, [usuario]);
 
   async function quizList() {
-    const quiz = await list();
+    console.log(usuario)
+    const quiz = await list(usuario);
     setData(quiz);
   }
 
@@ -49,7 +52,7 @@ const QuizList = () => {
             <Botao texto="Criar" onClick={() => goToCreate()} icon={IconAdd} />
             </div>
           </div>
-            {data.length ? 
+            {data?.length ? 
              <Table data={data} deleteItem={deleteItem} />
             : ''}
         </div>

@@ -13,7 +13,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: rgb(255, 255, 255);
+    margin-top: 15px;
+    color: rgb(215, 132, 132);
     width: 50%;
     height: 50px;
     border: rgb(218, 144, 144) solid;

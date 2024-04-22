@@ -1,14 +1,16 @@
 import { createContext } from "react";
 import db from "../../firebase/config";
 import QuestaoModel from "../../model/questao";
+import Usuario from "../../model/Usuario";
+import useAuth from "../hook/useAuth";
 import { Quiz } from "../Quiz.model";
 
 interface IDbContextProps {
   data?: any;
   create?: (quiz?: Quiz) => Promise<void>;
   update?: (id: number) => Promise<void>;
-  list?: () => void;
-  getQuizById?: (id: number) => void
+  list?: (usuario: Usuario) => void;
+  getQuizAll?: () => void
   deleteQuiz?: (id: number) => Promise<void>;
 }
 
@@ -25,16 +27,17 @@ const deleteQuiz = async (quiz: any) => {
   await db.collection("quiz").doc(quiz._id).delete();
 };
 
-const list = async () => {
-  const snapshot = await db.collection("quiz").get();
-  console.log(snapshot.docs)
-  const quiz = snapshot.docs.map(doc => (
-    {_id: doc.id, ...doc.data()}
-    ));
-  return quiz;
+const list = async (usuario: Usuario) => {
+  if(usuario) {
+    const snapshot = await db.collection("quiz").where("userId", '==', usuario?.uid).get();
+    const quiz = snapshot.docs.map(doc => (
+      {_id: doc.id, ...doc.data()}
+      ));
+    return quiz;
+  }
 };
 
-const getQuizById = async (id: number) => {
+const getQuizAll = async () => {
   const snapshot = await db.collection("quiz").get();
   console.log(snapshot.docs)
   const quiz = snapshot.docs.map(doc => (
@@ -50,7 +53,7 @@ export function DataBaseProvider(props) {
         create,
         update,
         list,
-        getQuizById,
+        getQuizAll,
         deleteQuiz,
       }}
     >

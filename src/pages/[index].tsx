@@ -24,10 +24,10 @@ const [idsQuestoes, setIdsQuestao] = useState([])
 const [qtdRespostaCerta, setQtdRespostaCerta] = useState(0)
 const [duration, setDuration] = useState();
 
-const { list } = useDataBase();
+const { getQuizAll } = useDataBase();
 
   async function consultarIdsQuestoes(idQuiz) {
-    const docList: any = await list();
+    const docList: any = await getQuizAll();
     const quiz = docList.find(doc => 
       doc.id === idQuiz
     )

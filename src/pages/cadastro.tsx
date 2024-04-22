@@ -7,8 +7,6 @@ import QuestaoModel from "../model/questao";
 import  RegisterQuiz  from "./RegisterQuiz";
 import route, { useRouter } from "next/router";
 import { Quiz } from "../data/Quiz.model";
-import { DataTransferProvider } from "../data/context/DataTransferContext";
-import useDataTrasnfer from "../data/hook/useDataTransfer";
 
 export default function Cadastro() {
   const { create } = useDataBase();

@@ -14,6 +14,7 @@ import {
 import styles from "../../styles/RegisterQuiz.module.css";
 import route, { useRouter } from "next/router";
 import useDataTrasnfer from "../../data/hook/useDataTransfer";
+import useAuth from "../../data/hook/useAuth";
 
 interface IProps {
   save: (quiz: Quiz) => Promise<void>;
@@ -21,13 +22,19 @@ interface IProps {
 }
 
 export default function RegisterQuiz({ save, cancel }: IProps) {
-  const [name, setName] = useState();
-  const [duration, setDuration] = useState();
+  const [name, setName] = useState('');
+  const [duration, setDuration] = useState(0);
   const [erro, setErro] = useState("");
 
   const { create } = useDataBase();
   const [quiz, setQuiz] = useState<Quiz>();
-  const { questoes, clearList, deleteItem } = useDataTrasnfer();
+  const { nameTransfer, durationTransfer, questoes, clearList, deleteItem, onChangeDuration, onChangeName } = useDataTrasnfer();
+  const { usuario } = useAuth();
+
+  useEffect(()=> {
+    setName(nameTransfer)
+    setDuration(durationTransfer)
+  },[])
 
   async function saveQuiz() {
     if (validateForm()) {
@@ -37,6 +44,7 @@ export default function RegisterQuiz({ save, cancel }: IProps) {
         countQuestion: questoes.length,
         id: Math.floor(Math.random() * (100 - 1)) + 1,
         questoes: questoes,
+        userId: usuario.uid
       };
       setQuiz(quiz);
       await create(quiz);
@@ -69,6 +77,8 @@ export default function RegisterQuiz({ save, cancel }: IProps) {
   }
 
   function goToCreate() {
+    onChangeDuration(duration);
+    onChangeName(name);
     route.push("/cadastro-questoes");
   }
 
