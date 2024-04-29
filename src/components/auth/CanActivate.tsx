@@ -1,7 +1,7 @@
-import useAuth from "../../data/hook/useAuth";
 import Image from "next/image"
 import loading from '../../../public/images/loading.gif'
 import route from 'next/router'
+import useAuth from "../../data/hook/useAuth"
 
 
 export function CanActivate(props) {

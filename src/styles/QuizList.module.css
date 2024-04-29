@@ -3,14 +3,13 @@
 .quiz {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   height: 100vh;
   padding: 50px;
 }
 
 .quizHeader {
   display: flex;
-  justify-content:space-between;
+  justify-content:flex-end;
 }
 
 .buttons {

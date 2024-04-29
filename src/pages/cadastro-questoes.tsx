@@ -6,6 +6,7 @@ import QuestaoModel from "../model/questao";
 import route, { useRouter } from "next/router";
 import { Quiz } from "../data/Quiz.model";
 import  RegisterQuestoes  from "./RegisterQuiz/RegisterQuestion";
+import Layout from "../components/template/Layout";
 
 export default function CadastroQuestoes() {
   const [quiz, setQuiz] = useState();
@@ -41,7 +42,9 @@ export default function CadastroQuestoes() {
 
   return (
     <DataBaseProvider>
+        <Layout titulo="Cadastro de quetão" subtitulo="Listagem e cadastro de questionários. Clique que 'Criar' para adicionar um novo questionário">
         <RegisterQuestoes save={save} cancel={goToList} />
+        </Layout>
     </DataBaseProvider>
   );
 }

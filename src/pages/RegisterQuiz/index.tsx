@@ -90,7 +90,6 @@ export default function RegisterQuiz({ save, cancel }: IProps) {
     <>
       <div className={styles.container}>
         <div className={styles.resgisterQuiz}>
-          <Title titulo="Cadastro de Questionário" />
           <Input
             tipo="text"
             texto={`Descrição`}
@@ -111,7 +110,9 @@ export default function RegisterQuiz({ save, cancel }: IProps) {
               onClick={() => goToCreate()}
             />
           </div>
-          <Title titulo="Lista de questões" />
+          <h1>
+            Lista de questões
+          </h1>
           {questoes.length ? (
             questoes.map((questao) => (
               <CardQuestao key={questao.id} deleteItem={deleteQuestion} id={questao.id} texto={questao.enunciado} />

@@ -38,10 +38,8 @@ const QuizList = () => {
 
   return (
     <>
-      <body className={styles.body}>
         <div className={styles.quiz}>
           <div className={styles.quizHeader}>
-            <Title titulo="Lista de questionários" />
             <div className={styles.buttons}>
             <Botao
               texto="Consultar"
@@ -56,7 +54,6 @@ const QuizList = () => {
              <Table data={data} deleteItem={deleteItem} />
             : ''}
         </div>
-      </body>
     </>
   );
 };

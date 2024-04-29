@@ -68,7 +68,6 @@ export default function RegisterQuestoes({ save, cancel }: IProps) {
     <>
       <div className={styles.container}>
         <div className={styles.resgisterQuiz}>
-      <Title titulo="Cadastro de Questão" />
           <Input
             tipo="text"
             texto={`Enunciado`}
